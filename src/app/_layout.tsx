@@ -1,15 +1,42 @@
 // import { Slot } from "expo-router";
 // import { Tabs } from "expo-router";
 import { Stack } from "expo-router";
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter";
 
 import { colors } from "@/theme/colors";
 
 export default function Layout() {
-  //   <Slot /> - pega todas as rotas dentro da pasta "app" e repassa para o esse Slot.
-  //   return <Slot />;
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_700Bold,
+  });
 
-  // <Tabs /> - mesma coisa do <Slot />, mas com o padrão de navegação Bottom Tabs (React Navigation).
-  /*   return (
+  if (!fontsLoaded) {
+    return;
+  }
+
+  return (
+    //   <Stack /> - mesma coisa do <Slot />, mas com o padrão de navegação Stack (React Navigation).
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: {
+          backgroundColor: colors.white,
+        },
+      }}
+    />
+
+    //   <Slot /> - pega todas as rotas dentro da pasta "app" e repassa para o esse Slot.
+    //   return <Slot />;
+
+    // <Tabs /> - mesma coisa do <Slot />, mas com o padrão de navegação Bottom Tabs (React Navigation).
+    /*   return (
     <Tabs>
       <Tabs.Screen
         name="index"
@@ -22,16 +49,5 @@ export default function Layout() {
       />
     </Tabs>
   ); */
-
-  //   <Stack /> - mesma coisa do <Slot />, mas com o padrão de navegação Stack (React Navigation).
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: colors.white,
-        },
-      }}
-    />
   );
 }
